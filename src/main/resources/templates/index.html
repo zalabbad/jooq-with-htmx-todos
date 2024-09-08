@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Empty Page</title>
+</head>
+<body>
+
+<h1>Welcome to Tdody!</h1>
+<div th:replace="~{fragments :: todos}"></div>
+
+<div th:replace="~{fragments :: create-todo}">
+</div>
+
+
+<script crossorigin="anonymous"
+        integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
+        src="https://unpkg.com/htmx.org@2.0.1"></script>
+<script>
+    htmx.logAll();
+</script>
+
+</body>
+</html>

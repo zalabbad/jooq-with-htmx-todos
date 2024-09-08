@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Thymeleaf Template</title>
+</head>
+<body>
+
+<div id="todos" th:fragment="todos">
+  <h2>You have <span th:text="${count}"></span> pending tasks</h2>
+  <ul>
+    <li th:each="todo : ${todos}">
+      <input hx-swap="outerHTML"
+             hx-target="#todos"
+             th:checked="${todo.get('is_done')}"
+             th:hx-post="@{'/todos/' + ${todo.get('id')} + '/toggle'}"
+             th:id="${todo.get('id')}"
+             th:name="${todo.get('id')}"
+             type="checkbox">
+      <label th:for="${todo.get('id')}" th:text="${todo.get('title')}"></label>
+    </li>
+  </ul>
+</div>
+
+<div th:fragment="create-todo">
+  <form action="post"
+        hx-swap="outerHTML"
+        hx-target="#todos"
+        th:hx-post="@{/todos}">
+    <label for="new-todo">Add to the list:</label>
+    <input id="new-todo" name="todo" th:type="text">
+    <button type="submit">Add</button>
+  </form>
+</div>
+
+</body>
+</html>
