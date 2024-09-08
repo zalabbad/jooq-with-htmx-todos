@@ -34,6 +34,7 @@ public class TodosService {
 
     @Transactional(readOnly = true)
     public List<TodosRecord> findListBy(Condition... conditions) {
+        // TODO: add pagination
         Result<TodosRecord> result = dslContext.selectFrom(TODOS)
             .where(conditions)
             .fetch();
